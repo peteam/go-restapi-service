@@ -35,6 +35,33 @@ pipeline {
         }
       }
     }
+	stage('Build Test Coverage') {
+      when {
+        branch 'master'
+      }
+      steps {
+        container('go') {
+          dir('/home/jenkins/go/src/github.com/srikanthcone/go-restapi-service') {
+            checkout scm
+
+            // ensure we're not on a detached head
+            sh "git checkout master"
+            sh "git config --global credential.helper store"
+            sh "jx step git credentials"
+
+            // so we can retrieve the version in later steps
+			
+			// get mux package and install
+			sh "go get github.com/gorilla/mux"
+			
+            sh "echo \$(jx-release-version) > VERSION"
+            sh "jx step tag --version \$(cat VERSION)"
+			sh "go test -coverprofile=cover.txt"
+          }
+        }
+      }
+    }
+	
     stage('Build Release') {
       when {
         branch 'master'

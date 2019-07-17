@@ -79,6 +79,14 @@ func deleteMovies(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(movies)
 }
 
+func hello(user string) {
+	return fmt.Sprintf( "Hello %v!", user)
+}
+
+func hello2(user string) {
+	return fmt.Sprintf( "Sorry %v!", user)
+}
+
 func main() {
 	router := mux.NewRouter()
 
