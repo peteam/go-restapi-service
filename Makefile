@@ -43,10 +43,12 @@ linux:
 FGT := $(GOPATH)/bin/fgt
 $(FGT):
 	go get github.com/GeertJohan/fgt
+	go get github.com/gorilla/mux
 
 GOLINT := $(GOPATH)/bin/golint
 $(GOLINT):
 	go get github.com/golang/lint/golint
+	go get github.com/gorilla/mux
 
 $(PKGS): $(GOLINT) $(FGT)
 	@echo "LINTING"
