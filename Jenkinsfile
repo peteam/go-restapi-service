@@ -22,6 +22,8 @@ pipeline {
         container('go') {
           dir('/home/jenkins/go/src/github.com/srikanthcone/go-restapi-service') {
             checkout scm
+			// get mux package and install
+			sh "go get github.com/gorilla/mux"
             sh "make linux"
             sh "export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml"
             sh "jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION"
@@ -68,6 +70,8 @@ pipeline {
       steps {
         container('go') {
           dir('/home/jenkins/go/src/github.com/srikanthcone/go-restapi-service/charts/go-restapi-service') {
+			// get mux package and install
+			sh "go get github.com/gorilla/mux"
             sh "jx step changelog --version v\$(cat ../../VERSION)"
 
             // release the helm chart
