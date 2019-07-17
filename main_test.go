@@ -1,11 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"log"
-	"net/http"
-	"fmt"
-	"github.com/gorilla/mux"
+	"testing"
 )
 
 func TestMain(t *Testing.T) {
