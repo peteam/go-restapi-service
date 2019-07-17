@@ -48,6 +48,10 @@ pipeline {
             sh "jx step git credentials"
 
             // so we can retrieve the version in later steps
+			
+			// get mux package and install
+			go get github.com/gorilla/mux
+			
             sh "echo \$(jx-release-version) > VERSION"
             sh "jx step tag --version \$(cat VERSION)"
             sh "make build"
