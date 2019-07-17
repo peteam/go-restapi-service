@@ -16,7 +16,7 @@ func TestMain(t *testing.T) {
 	
 	result1 := hello2("Srikanth")
 	
-	if (result1 != "Hello Srikanth!") {
+	if (result1 != "Sorry Srikanth") {
 		t.Errorf("hello2 failed, expected %v, got %v", "Hello Srikanth", result1)
 	} else {
 		t.Logf("hello2 success, expected %v, got %v", "Sorry Srikanth", result1)
