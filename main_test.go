@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestMain(t *Testing.T) {
-	result := hello(Srikanth)
+func TestMain(t *testing.T) {
+	result := hello("Srikanth")
 	
 	if (result != "Hello Srikanth") {
 		t.Errorf("hello failed, expected %v, got  %v", "Hello Srikanth!", result)
@@ -14,7 +14,7 @@ func TestMain(t *Testing.T) {
 	}
 	
 	
-	result1 := hello2(Srikanth)
+	result1 := hello2("Srikanth")
 	
 	if (result1 != "Hello Srikanth") {
 		t.Errorf("hello2 failed, expected %v, got %v", "Hello Srikanth", result1)
