@@ -26,11 +26,6 @@ var movies []Movie
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
 	title := "GO Rest API of Movie Resources\n Fetch All Movies : GET /movies\n Fetch Movie By Id : GET /movies/{id}\n Create Movie : POST /movies\n Update Movie : PUT /movies/{id}\n Delete Movie : DELETE /movies\n"
-
-	from := ""
-	if r.URL != nil {
-		from = r.URL.String()
-	}
 	fmt.Fprintf(w, "Hello from:  "+title+"\n")
 }
 
