@@ -19,7 +19,7 @@ func TestMain(t *testing.T) {
 	if (result1 != "Hello Srikanth!") {
 		t.Errorf("hello2 failed, expected %v, got %v", "Hello Srikanth", result1)
 	} else {
-		t.Logf("hello2 success, expected %v, got %v", "Hello Srikanth", result1)
+		t.Logf("hello2 success, expected %v, got %v", "Sorry Srikanth", result1)
 	}
 	
 	
