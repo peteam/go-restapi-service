@@ -24,6 +24,16 @@ type CastCrew struct {
 
 var movies []Movie
 
+func defaultHandler(w http.ResponseWriter, r *http.Request) {
+	title := "GO Rest API of Movie Resources\n Fetch All Movies : GET /movies\n Fetch Movie By Id : GET /movies/{id}\n Create Movie : POST /movies\n Update Movie : PUT /movies/{id}\n Delete Movie : DELETE /movies\n"
+
+	from := ""
+	if r.URL != nil {
+		from = r.URL.String()
+	}
+	fmt.Fprintf(w, "Hello from:  "+title+"\n")
+}
+
 func getMovieById(w http.ResponseWriter, req *http.Request) {
 	w.Header().Add("content-type", "application/json")
 	params := mux.Vars(req)
@@ -80,11 +90,12 @@ func main() {
 	//perload some movies
 	movies = append(movies, Movie{Id: "1", Title: "Spider Man Far From Home", Description: "Peter Parker's world has changed a lot since the events of Avengers: Endgame (2019)", Genre: "Action", Rating: "8", CastCrew: &CastCrew{Name: "Jon Watts", Role: "Director"}})
 
+	router.HandleFunc("/", defaultHandler).Methods("GET")
 	router.HandleFunc("/movies", getMovies).Methods("GET")
 	router.HandleFunc("/movies/{id}", getMovieById).Methods("GET")
 	router.HandleFunc("/movies", addMovies).Methods("POST")
 	router.HandleFunc("/movies/{id}", updateMovies).Methods("PUT")
 	router.HandleFunc("/movies/{id}", deleteMovies).Methods("DELETE")
 
-	log.Fatal(http.ListenAndServe(":8011", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
