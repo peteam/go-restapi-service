@@ -80,11 +80,11 @@ func deleteMovies(w http.ResponseWriter, req *http.Request) {
 }
 
 func hello(user string) string {
-	return fmt.Sprintf("Hello %v!", user)
+	return fmt.Sprintf("Hello %v", user)
 }
 
 func hello2(user string) string {
-	return fmt.Sprintf("Sorry %v!", user)
+	return fmt.Sprintf("Sorry %v", user)
 }
 
 func main() {
