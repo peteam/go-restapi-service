@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: opentest.azurecr.io/go-sample-project-246814/go-restapi-service
-  tag: 0.0.20
+  tag: 0.0.21
   pullPolicy: IfNotPresent
 
 # define environment variables here as a map of key: value
